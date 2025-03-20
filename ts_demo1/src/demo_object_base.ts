@@ -16,9 +16,11 @@ console.log(`user2 is ${user2.name} ${user2.age}`);
 const user3 = {...user1, name: "Kojiro"};
 console.log(`user3 is ${user3.name} ${user3.age}`);
 
-const doctor1 = {name: "BlackJack", age: 22, license: "no-license"};
-console.log(`doctor1 is ${doctor1.name} ${doctor1.age} ${doctor1.license}`);
+//Name. not name.
+const doctor1 = {Name: "BlackJack", age: 22, license: "no-license"};
+console.log(`doctor1 is ${doctor1.Name} ${doctor1.age} ${doctor1.license}`);
 
+//Name and name.
 const user4 = {...doctor1, ...user2};
-console.log(`user4 is ${user4.name} ${user4.age} ${user4.license}`);
+console.log(`user4 is ${user4.Name} ${user4.name} ${user4.age} ${user4.license}`);
 
