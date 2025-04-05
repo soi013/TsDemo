@@ -94,11 +94,11 @@ const areaCircle = mathObj.calcAreaCircle(10);
 console.log(`areaCircle is ${areaCircle}.`);
 
 
-// 可変長引数
-const allConcat = (pars: string, ...inputs: string[]): string => {
+// 可変長引数のアロー式
+const allConcat = (separator: string, ...inputs: string[]): string => {
     let result = inputs[0];
     for (const input of inputs.slice(1)) {
-        result += pars + input;
+        result += separator + input;
     }
     return result;
 }
@@ -133,5 +133,64 @@ console.log(`android2 :${android2.name} ${android2.price} ${android2.os}`);
 inputValues
     .map(value => value.toUpperCase())
     .forEach(value => console.log(value));
+
+
+// 関数型の別名
+type FuncInputString = (input: number) => void;
+
+// 関数型typeに関数を代入
+const homuRepeat: FuncInputString = (input: number) => {
+    let homus = "homu";
+    for (let i = 1; i < input; i++) {
+        homus += "_homu";
+    }
+    console.log(homus);
+}
+
+homuRepeat(3);
+
+// 関数型typeに関数を代入。引数の名称は関数型typeと同じでなくてもよい
+const fugaRepeat: FuncInputString = (count: number) => {
+    let fugas = "fuga";
+    for (let i = 1; i < count; i++) {
+        fugas += "_fuga";
+    }
+    console.log(fugas);
+}
+
+fugaRepeat(3);
+
+// 関数型typeに関数を代入。引数の型は省略してもいい
+const powRepeat: FuncInputString = (count) => {
+    let pow = "pow";
+    for (let i = 1; i < count; i++) {
+        pow += "_pow";
+    }
+    console.log(pow);
+}
+
+powRepeat(3);
+
+// コンパイルエラー パラメーター 'num' の型は暗黙的に 'any' になります。ts(7006)
+// const badFunc = (num) => num * 2;
+
+// 型注釈をつけるればよい
+const goodFunc = (num: number) => num * 2;
+
+// 関数型とコールシグネチャ。普通は関数型を使う
+type FuncInNumberOutString = (num: number) => string;
+type CallSigInputNumberOutString = { (num: number): string };
+
+const funcInNumberOutString: FuncInNumberOutString = (num) => num.toString();
+const callSigInputNumberOutString: CallSigInputNumberOutString = (num) => num.toString();
+
+console.log(funcInNumberOutString(99));
+console.log(callSigInputNumberOutString(999));
+
+
+
+
+
+
 
 
