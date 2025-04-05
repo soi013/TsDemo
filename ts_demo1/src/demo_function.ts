@@ -187,6 +187,50 @@ const callSigInputNumberOutString: CallSigInputNumberOutString = (num) => num.to
 console.log(funcInNumberOutString(99));
 console.log(callSigInputNumberOutString(999));
 
+// 関数の部分型
+
+type Drink = {
+    name: string;
+    size: string;
+}
+
+type CanDrink = {
+    name: string;
+    size: string;
+    made: "alminum" | "steel";
+};
+
+// 関数型typeの引数では親の型(Drink)を指定
+type GetDrinkName = (drink: CanDrink) => string;
+
+// 実際の関数では引数に子の型(CanDrink)を指定。引数は反変の位置なので成り立つ
+const getDrinkName: GetDrinkName = (drink: Drink) => drink.name;
+
+// 関数型typeの戻り値では親の型(Drink)を指定
+type CreateDrinkByName = (name: string) => Drink;
+// 実際の関数では戻り値に子の型(CanDrink)を指定。戻り値は共変の位置なので成り立つ
+const createDrinkByName: CreateDrinkByName = (name: string) => ({
+    name,
+    size: "M",
+    made: "alminum",
+} as CanDrink);
+
+const colaCanDrink: CanDrink = {
+    name: "コーラ",
+    size: "M",
+    made: "alminum",
+}
+
+console.log(getDrinkName(colaCanDrink));
+
+const cola = createDrinkByName("ペプシ");
+console.log(cola);
+
+
+
+
+
+
 
 
 
