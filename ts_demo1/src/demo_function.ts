@@ -227,14 +227,45 @@ const cola = createDrinkByName("ペプシ");
 console.log(cola);
 
 
+// 関数のジェネリック引数・返り値
+function getArrayCenter<T>(array: T[]): T {
+    const centerIndex = Math.floor(array.length / 2);
+    return array[centerIndex];
+}
+
+// デモ getArrayCenter
+const centerNum = getArrayCenter([1, 2, 3, 4, 5]);
+console.log(`centerNum is ${centerNum}`);
+
+const centerStr = getArrayCenter(["a", "b", "c", "d", "e"]);
+console.log(`centerStr is ${centerStr}`);
+
+// 制約付きジェネリック型
+const callName = <T extends { name: string }>(hasName: T) => console.log(`HEY ${hasName.name}!`);
+
+callName({ name: "Benjamin" });
+
+//ジェネリックなコールバック
+function doOnCenter<T, U>(array: T[], callback: (center: T) => U) {
+    const centerIndex = Math.floor(array.length / 2);
+    const center = array[centerIndex];
+    return callback(center);
+}
+
+doOnCenter([1, 2, 3, 4, 5], (center) => console.log(`center is ${center}`));
+const tenTimeCenter = doOnCenter([1, 2, 3, 4, 5], (center) => center * 10);
+console.log(`tenTimeCenter is ${tenTimeCenter}`);
 
 
+// 変数のスコープ
 
+const myName = "Kuro";
 
+function showMyName() {
+    // 関数内ではグローバル変数と同じ名前の変数を宣言すると、シャドーイングされる
+    const myName = "Shiro";
+    console.log(`myName in function is ${myName}`);
+}
 
-
-
-
-
-
-
+showMyName();
+console.log(`myName in global is ${myName}`);
