@@ -70,3 +70,16 @@ class AdminUser extends UserC {
 
 const adminUser = new AdminUser("Nobuyuki", 20, 10000);
 console.log(adminUser);
+
+// 抽象クラス
+abstract class UserBase {
+    name: string = "";
+}
+
+class UserEx extends UserBase {
+    constructor(name: string) {
+        super();
+        this.name = name;
+    }
+}
+
