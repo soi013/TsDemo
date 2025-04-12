@@ -61,3 +61,12 @@ console.log(UserC);
 
 // let userY:UserCX; // クラス式だと型は作られないので、型注釈に使えない
 
+// クラスの継承
+class AdminUser extends UserC {
+    constructor(name: string, realAge: number, salary: number) {
+        super(name, realAge, salary);
+    }
+}
+
+const adminUser = new AdminUser("Nobuyuki", 20, 10000);
+console.log(adminUser);
