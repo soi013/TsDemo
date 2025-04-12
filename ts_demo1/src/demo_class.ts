@@ -73,7 +73,7 @@ console.log(adminUser);
 
 // 抽象クラス
 abstract class UserBase {
-    name: string = "";
+    name: string = "unknown";
 }
 
 class UserEx extends UserBase {
@@ -83,3 +83,4 @@ class UserEx extends UserBase {
     }
 }
 
+const userEx = new UserEx("Yoko");
