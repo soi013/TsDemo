@@ -83,4 +83,75 @@ class UserEx extends UserBase {
     }
 }
 
+// const userAb = new UserBase(); //抽象クラスのインスタンスは作成できません。ts(2511)
 const userEx = new UserEx("Yoko");
+console.log(userEx);
+
+
+// 組み込みオブジェクトを継承したクラスも作れる
+class RepeatArray<T> extends Array<T> {
+    count: number;
+
+    constructor(value: T, count: number) {
+        // valueをtimes回繰り返して配列を作る
+        const array = new Array<T>(count);
+        for (let i = 0; i < count; i++) {
+            array[i] = value;
+        }
+        super(...array);
+
+        this.count = count;
+    }
+
+    override push(value: T): number {
+        // 配列の長さがcountを超えたら、配列の最初の要素を削除
+        if (this.length >= this.count) {
+            this.shift();
+        }
+
+        super.push(value);
+        return this.length;
+    }
+}
+
+const repeatArray = new RepeatArray<number>(3, 5);
+console.log(repeatArray);
+
+repeatArray.push(4);
+repeatArray.push(5);
+repeatArray.push(6);
+console.log(`push 4, 5, 6: ${repeatArray}`);
+
+repeatArray.pop();
+console.log(`pop once    : ${repeatArray}`);
+
+
+
+
+// thisで自身にアクセス
+
+class UserC2 {
+    name: string;
+    age: number;
+    private realAge: number; // プライベートプロパティ
+
+    constructor(name: string, realAge: number) {
+        this.name = name;
+        this.realAge = realAge;
+        this.age = realAge - 2;
+    }
+
+    public filterOlder(users: UserC2[]) {
+        // thisは自身のインスタンス、userは引数。どちらのプライベートプロパティも参照できる
+        return users.filter(user => user.realAge > this.realAge); //アロー関数のthisは外側のthisを参照する
+        // return users.filter(function(u){return u.realAge > this.realAge;}); // アロー関数ではできるが、普通の関数式はthisが参照できない
+    }
+}
+
+const userC2Yoko = new UserC2("Yoko", 19,);
+const userC2Nobuyuki = new UserC2("Nobuyuki", 20,);
+const userC2Casey = new UserC2("Casey", 15,);
+const userC2Tamegoro = new UserC2("Tamegoro", 50,);
+
+console.log(`older than Yoko: ${userC2Yoko.filterOlder([userC2Yoko, userC2Nobuyuki, userC2Casey, userC2Tamegoro])}`);
+
