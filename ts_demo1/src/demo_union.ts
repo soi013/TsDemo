@@ -225,3 +225,35 @@ const knife4: KnifeUndefined = {
 //     bladeLength: 10,
 //     material: undefined,
 // }
+
+// オプショナルチェイニング
+console.log("\n ## オプショナルチェイニング");
+
+function getBladeLength(knife: KnifeOptional | undefined | null) {
+    // return knife.bladeLength; // 'knife' は 'undefined' の可能性があります。ts(18048)
+
+    // nullまたはundefinedの場合は、「undefined」を返す。 「null」は返さない
+    return knife?.bladeLength;
+}
+
+const knife5: KnifeOptional = {
+    bladeLength: 5, // 銃刀法ギリセーフ
+}
+
+let knife6: KnifeOptional | undefined = undefined;
+
+console.log(getBladeLength(knife5));
+console.log(getBladeLength(knife6)); //undefinde
+
+let knife7: KnifeOptional | null = null;
+
+console.log(getBladeLength(knife7)); //nullになるかと思いきや、undefinedになる
+
+// オプショナルチェイニングでundefinedを返すと、その後のメソッドは実行されない
+const bladeLengthString = getBladeLength(knife5)?.toString().padStart(4, "0");
+console.log(bladeLengthString); //0005
+
+const bladeLengthString2 = getBladeLength(knife6)?.toString().padStart(4, "0");
+console.log(bladeLengthString2); //undefined
+
+
