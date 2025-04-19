@@ -1,5 +1,5 @@
 console.log("# demo_union");
-console.log("\n ## Union型");
+console.log("\n ## ユニオン型");
 
 type Speaker = {
     name: string;
@@ -107,3 +107,69 @@ const animalAndString2: AnimalAndString = "hoge" as Animal & string;
 
 console.log(animalAndString);
 console.log(animalAndString2);
+
+// 関数型とユニオン型・インターセクション型
+console.log("\n ## 関数型とユニオン型・インターセクション型");
+
+type Snake = Animal & {
+    //蛇の品種
+    breed: string;
+}
+
+function getName(human: Human) {
+    return human.name;
+}
+
+function getBreed(snake: Snake) {
+    return snake.breed;
+}
+
+// 異なる型の引数を受け取る関数を組み合わせた、不思議な関数。
+// 型は、((human: Human) => string) | ((snake: Snake) => string)
+const randomNameOrBreed = Math.random() > 0.5 ? getName : getBreed;
+
+const human1: Human = {
+    species: "human",
+    age: 20,
+    name: "Taro",
+}
+
+const snake1: Snake = {
+    species: "snake",
+    age: 1,
+    breed: "cobra",
+}
+
+// 普通のHuman型やSnake型を渡すとエラー
+// 型 'Human' の引数を型 'Animal & { name: string; } & { breed: string; }' のパラメーターに割り当てることはできません。
+//   プロパティ 'breed' は型 'Human' にありませんが、型 '{ breed: string; }' では必須です。ts(2345)
+// const nameOrBreed1 = randomNameOrBreed(human1);
+// const nameOrBreed2 = randomNameOrBreed(snake1);
+
+// 人であり蛇でもある、悲しい生き物
+const snakeMan: Human & Snake = {
+    species: "snake",
+    age: 1,
+    breed: "cobra",
+    name: "Taro",
+}
+
+// ここでrandomNameOrBreedの型を見ると以下になっている
+// (arg0: Animal & { name: string; } & { breed: string; }) => string
+
+const nameOrBreed3 = randomNameOrBreed(snakeMan);
+console.log(nameOrBreed3); //結果はcobra or Taro
+
+// 同名だが、型が違うプロパティを持つインターセクション型は、実際はインスタンスを作れない
+type SpearPhonker = Speaker & Earphone;
+
+// 型 'string' を型 'never' に割り当てることはできません。ts(2322)
+// demo_union.ts(7, 5): 予期された型は、型 'SpearPhonker' に対してここで宣言されたプロパティ 'size' から取得されています
+// const spearPhonker: SpearPhonker = {
+//     name: "spearPhonker",
+//     power: 1,
+//     size: "speakerとしては小さめ、earphoneとしては大きめ",
+//     earphoneType: "spearPhonker",
+// }
+
+// const sizeOrPower = randomSizeOrPower(spearPhonker);
