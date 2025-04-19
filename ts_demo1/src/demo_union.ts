@@ -154,7 +154,7 @@ const snakeMan: Human & Snake = {
     name: "Taro",
 }
 
-// ここでrandomNameOrBreedの型を見ると以下になっている
+// 呼び出し時のrandomNameOrBreedの型を見ると以下になっている。合成されて単純な型になっている
 // (arg0: Animal & { name: string; } & { breed: string; }) => string
 
 const nameOrBreed3 = randomNameOrBreed(snakeMan);
@@ -173,3 +173,55 @@ type SpearPhonker = Speaker & Earphone;
 // }
 
 // const sizeOrPower = randomSizeOrPower(spearPhonker);
+
+// オプショナルプロパティとユニオン型
+console.log("\n ## オプショナルプロパティとユニオン型");
+
+type KnifeOptional = {
+    bladeLength: number;
+    material?: string; // オプショナルプロパティ string | undefined
+}
+
+// オプショナルプロパティは宣言しても、しなくてもいい
+const knife1: KnifeOptional = {
+    bladeLength: 10,
+    material: "steel",
+}
+
+const knife2: KnifeOptional = {
+    bladeLength: 10,
+}
+
+const knife3: KnifeOptional = {
+    bladeLength: 10,
+    material: undefined,
+}
+
+console.log(knife1);
+console.log(knife2);
+console.log(knife3);
+
+type KnifeUndefined = {
+    bladeLength: number;
+    material: string | undefined;
+}
+
+const knife4: KnifeUndefined = {
+    bladeLength: 10,
+    material: "dragongrass",
+}
+
+// 型がundefinedだったとしても、省略できるわけではない
+// プロパティ 'material' は型 '{ bladeLength: number; }' にありませんが、型 'KnifeUndefined' では必須です。ts(2741)
+// const knife4: KnifeUndefined = {
+//     bladeLength: 10,
+// }
+
+// 省略してもいい→オプショナルプロパティ
+// 省略したいわけではないが、値が存在しない場合がある→undefinedとのユニオン型
+
+//exactOptionalPropertyTypes オプションが有効だと、これもエラーになる
+// const knife9: KnifeOptional = {
+//     bladeLength: 10,
+//     material: undefined,
+// }
