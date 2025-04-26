@@ -103,5 +103,23 @@ const jose: JoJo = {
 
 console.log(jose);
 
+// リテラル型のwiding
+console.log("\n ## リテラル型のwiding");
 
+// リテラル型 jjWiding: "ジョナサン"
+const jjWiding = "ジョナサン";
 
+// リテラル型 jjNotWiding: "ジョセフ"
+const jjNotWiding: "ジョセフ" = "ジョセフ";
+
+// widingされる。 jjWidingLet:string
+let jjWidingLet = jjWiding;
+// widingされない。 jjNotWidingLet: "ジョセフ"
+let jjNotWidingLet = jjNotWiding;
+
+jjWidingLet = "ジュルノ"; //widingされたstringだから変更できる
+console.log(jjWidingLet);
+
+// 型 '"ジュルノ"' を型 '"ジョセフ"' に割り当てることはできません。ts(2322)
+// jjNotWidingLet = "ジュルノ"; //widingされていないリテラル型だから変更できない
+// console.log(jjNotWidingLet);
