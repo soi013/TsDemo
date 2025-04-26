@@ -70,4 +70,38 @@ console.log(jojoFullName3);
 console.log(jojoFullName4);
 console.log(jojoFullName5);
 
+// オブジェクト内のリテラル型
+console.log("\n ## オブジェクト内のリテラル型");
+
+// { name: string; generation: number;}
+const jona = {
+    name: "ジョナサン",
+    generation: 1,
+}
+
+// オブジェクトのプロパティを変更できるので、プロパティはWidingされた型になる
+jona.name = "ジョセフ";
+
+console.log(jona);
+
+// { name: "ジョセフ"; readonly generation: 2;}
+type JoJo = {
+    name: "ジョセフ",
+    readonly generation: 2,
+}
+
+// typeでリテラル型のプロパティを指定すれば、そのプロパティはリテラル型になる
+// const jose: JoJo = {
+//     name: "ジョルノ", //型 '"ジョルノ"' を型 '"ジョセフ"' に割り当てることはできません。ts(2322)
+//     generation: 3, //型 '3' を型 '2' に割り当てることはできません。ts(2322)
+// }
+
+const jose: JoJo = {
+    name: "ジョセフ",
+    generation: 2,
+}
+
+console.log(jose);
+
+
 
