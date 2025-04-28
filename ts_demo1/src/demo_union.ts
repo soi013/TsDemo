@@ -256,4 +256,33 @@ console.log(bladeLengthString); //0005
 const bladeLengthString2 = getBladeLength(knife6)?.toString().padStart(4, "0");
 console.log(bladeLengthString2); //undefined
 
+// ユニオン型の絞り込み
+console.log("\n ## ユニオン型の絞り込み");
 
+type japanJojoName = "空条承太郎" | "東方仗助";
+
+type jojoName = japanJojoName | "ジョルノ=ジョバァーナ";
+
+function getJojoName(name: jojoName) {
+    // この時点では name:jojoName = japanJojoName | "ジョルノ=ジョバァーナ"
+    if (name === "ジョルノ=ジョバァーナ") {
+
+        return "姓: ジョバァーナ";
+    }
+    // この時点では name:japanJojoName
+    return getJapanJojoName(name);
+}
+
+function getJapanJojoName(name: japanJojoName) {
+    if (name === "空条承太郎") {
+        return "姓: 空条";
+    }
+    if (name === "東方仗助") {
+        return "姓: 東方";
+    }
+    return "姓: XX";
+}
+
+console.log(getJojoName("空条承太郎"));
+console.log(getJojoName("東方仗助"));
+console.log(getJojoName("ジョルノ=ジョバァーナ"));
