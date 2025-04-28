@@ -1,5 +1,5 @@
-console.log("# demo_template_literal.ts");
-console.log("\n ## テンプレートリテラル");
+console.log("# demo_literal_templateLiteral.ts");
+console.log("\n ## リテラル型とテンプレートリテラル型");
 
 // テンプレートリテラルの型。JoJoの名前のみを許す
 type onlyJoJo = `ジョ${string}=ジョ${string}`
