@@ -286,3 +286,72 @@ function getJapanJojoName(name: japanJojoName) {
 console.log(getJojoName("空条承太郎"));
 console.log(getJojoName("東方仗助"));
 console.log(getJojoName("ジョルノ=ジョバァーナ"));
+
+// 代数的データ型をユニオン型で表現
+console.log("\n ## 代数的データ型をユニオン型で表現");
+
+type jojoJapanese = {
+    tag: "jojoJapanese";
+    name: string;
+    stand: string;
+}
+
+type jojoJoester = {
+    tag: "jojoJoester";
+    name: string;
+}
+
+type jojoHero = jojoJapanese | jojoJoester;
+
+// 型 '"jojoItalian"' を型 '"jojoJapanese" | "jojoJoester"' に割り当てることはできません。ts(2322)
+// const jojoGiorno: jojoHero = {
+//     tag: "jojoItalian",
+//     name: "ジョルノ=ジョバァーナ",
+// }
+
+function getStand(hero: jojoHero) {
+    // jojoHeroにはstandプロパティがない
+    //プロパティ 'stand' は型 'jojoHero' に存在しません。  ts(2339)
+    // hero.stand
+
+    //しかしtagで絞り込めばstandプロパティが存在することが確定し、アクセスできるようになる
+    if (hero.tag === "jojoJapanese") {
+        return hero.stand;
+    }
+    return "standなし";
+}
+
+console.log(getStand({
+    tag: "jojoJapanese",
+    name: "空条承太郎",
+    stand: "スタープラチナ",
+}));
+
+console.log(getStand({
+    tag: "jojoJoester",
+    name: "ジョナサン=ジョースター",
+}));
+
+function getStandOrWave(hero: jojoHero) {
+    switch (hero.tag) {
+        case "jojoJapanese":
+            return hero.stand;
+        case "jojoJoester":
+            return "ジョースターは波紋を使う";
+        default:
+            return "standなし";
+    }
+}
+
+console.log(getStandOrWave({
+    tag: "jojoJapanese",
+    name: "空条承太郎",
+    stand: "スタープラチナ",
+}));
+
+console.log(getStandOrWave({
+    tag: "jojoJoester",
+    name: "ジョナサン=ジョースター",
+}));
+
+
