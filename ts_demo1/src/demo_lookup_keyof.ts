@@ -45,3 +45,28 @@ const keyS2 = keyString("price");
 console.log(keyS1);
 console.log(keyS2);
 
+console.log("\n ## typeofとの組み合わせ");
+
+const medicinePriceFactors = {
+    tablet: 1,
+    powder: 2,
+    injection: 5,
+}
+
+function calcMedicinePrice(factor: keyof typeof medicinePriceFactors, defualtPrice: number): number {
+    return defualtPrice * medicinePriceFactors[factor];
+}
+
+const injectionPrice = calcMedicinePrice("injection", 1000);
+const powderPrice = calcMedicinePrice("powder", 1000);
+
+//型 '"liquid"' の引数を型 '"tablet" | "powder" | "injection"' のパラメーターに割り当てることはできません。ts(2345)
+// const liquidPrice = calcMedicinePrice("liquid", 1000);
+
+console.log(injectionPrice);
+console.log(powderPrice);
+
+
+
+
+
