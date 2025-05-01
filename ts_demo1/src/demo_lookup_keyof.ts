@@ -45,7 +45,7 @@ const keyS2 = keyString("price");
 console.log(keyS1);
 console.log(keyS2);
 
-console.log("\n ## typeofとの組み合わせ");
+console.log("\n ## typeofとkeyofの組み合わせ");
 
 const medicinePriceFactors = {
     tablet: 1,
@@ -67,6 +67,34 @@ console.log(injectionPrice);
 console.log(powderPrice);
 
 
+console.log("\n ## ジェネリクスとkeyofの組み合わせ");
+
+// T型を引数として受け取る。KはT型のkeyに制約されている。返り値はTのKプロパティを取得したもの
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key];
+}
+
+const medicinePrice = getProperty(fentanyl1, "price");
+console.log(medicinePrice);
+
+// 型 '"hoge"' の引数を型 'keyof Medicine' のパラメーターに割り当てることはできません。ts(2345)
+// const medicineName = getProperty(fentanyl1, "hoge");
+
+type Bag = {
+    name: string;
+    size: number;
+    style: "handbag" | "shoulderbag" | "backpack";
+}
+
+// エルメスバッグ
+const hermesBag: Bag = {
+    name: "エルメスバッグ",
+    size: 100,
+    style: "handbag",
+}
+
+const hermesStyle = getProperty(hermesBag, "style");
+console.log(hermesStyle);
 
 
 
