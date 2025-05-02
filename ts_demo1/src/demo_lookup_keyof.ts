@@ -63,8 +63,8 @@ const powderPrice = calcMedicinePrice("powder", 1000);
 //型 '"liquid"' の引数を型 '"tablet" | "powder" | "injection"' のパラメーターに割り当てることはできません。ts(2345)
 // const liquidPrice = calcMedicinePrice("liquid", 1000);
 
-console.log(injectionPrice);
-console.log(powderPrice);
+console.log({ injectionPrice });
+console.log({ powderPrice });
 
 
 console.log("\n ## ジェネリクスとkeyofの組み合わせ");
@@ -75,7 +75,7 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 }
 
 const medicinePrice = getProperty(fentanyl1, "price");
-console.log(medicinePrice);
+console.log({ medicinePrice });
 
 // 型 '"hoge"' の引数を型 'keyof Medicine' のパラメーターに割り当てることはできません。ts(2345)
 // const medicineName = getProperty(fentanyl1, "hoge");
@@ -94,7 +94,7 @@ const hermesBag: Bag = {
 }
 
 const hermesStyle = getProperty(hermesBag, "style");
-console.log(hermesStyle);
+console.log({ hermesStyle });
 
 
 
