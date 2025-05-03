@@ -96,5 +96,16 @@ const hermesBag: Bag = {
 const hermesStyle = getProperty(hermesBag, "style");
 console.log({ hermesStyle });
 
+console.log("\n ## keyof は numberの可能性もある");
+
+function getPropertyAndLog<T, K extends keyof T & string>(obj: T, key: K): T[K] {
+    // 型制約に `& string` を追加して、string型に制約しないとエラーする
+    // プロパティ 'toUpperCase' は型 'string | number | symbol' に存在しません。
+    console.log(`key: ${key.toUpperCase()}`);
+    return obj[key];
+}
+
+getPropertyAndLog(fentanyl1, "name");
+getPropertyAndLog(fentanyl1, "price");
 
 
