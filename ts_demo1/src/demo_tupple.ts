@@ -51,6 +51,41 @@ console.log({ zeroNumber });
 // let emptyNumber: LongHeadStringAndNumbers = [];
 // console.log({ emptyNumber });
 
+console.log("\n ## スプレッド構文は先頭でも中間でもOK");
+
+type HeadSpread = [...string[], boolean];
+
+let headSpread: HeadSpread = ["one", "two", true];
+console.log({ headSpread });
+
+type CenterSpread = [string, ...number[], boolean];
+
+let centerSpread: CenterSpread = ["one", 2, 3, true];
+console.log({ centerSpread });
+
+// スプレッド構文は2つ以上使えない
+//rest 要素を別の rest 要素の後に指定することはできません。ts(1265)
+// type SideSpread = [...string[], boolean, ...number[]];
+
+console.log("\n ## タプルをスプレッド構文で組み合わせて新しいタプルを作る");
+
+type Weekday = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+type DayOfWeek = ["Sun", ...Weekday, "Sat",];
+
+let day: DayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+console.log({ day });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
