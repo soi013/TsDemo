@@ -1,3 +1,6 @@
+console.log("# demo_regex.ts");
+console.log("\n ## 正規表現のデモ");
+
 // Regex
 
 const regex1 = /hello/;

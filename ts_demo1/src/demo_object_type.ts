@@ -1,3 +1,6 @@
+console.log("# demo_object_type.ts");
+console.log("\n ## オブジェクト型のデモ");
+
 //これはオブジェクトリテラル
 const person1 = { name: "Taro", age: 30 };
 

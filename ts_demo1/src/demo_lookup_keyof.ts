@@ -1,4 +1,4 @@
-console.log("# demo_lookup_keyof");
+console.log("# demo_lookup_keyof.ts");
 console.log("\n ## lookupで型情報を再利用");
 
 type Medicine = {

@@ -1,3 +1,6 @@
+console.log("# csv_reader_for.ts");
+console.log("\n ## for文でcsvファイルを読み込む");
+
 type User = {
     id: number;
     name: string;

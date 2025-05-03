@@ -1,3 +1,6 @@
+console.log("# demo_date.ts");
+console.log("\n ## Dateのデモ");
+
 // Date
 const date1 = new Date();
 console.log(`date1: ${date1}`);

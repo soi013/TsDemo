@@ -1,4 +1,5 @@
-console.log("demo_exception2.ts");
+console.log("# demo_exception2.ts");
+console.log("\n ## エラーのデモ2");
 
 try {
     console.log("create error");

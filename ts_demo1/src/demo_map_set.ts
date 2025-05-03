@@ -1,3 +1,6 @@
+console.log("# demo_map_set.ts");
+console.log("\n ## Mapのデモ");
+
 // Map
 const map1: Map<string, number> = new Map();
 

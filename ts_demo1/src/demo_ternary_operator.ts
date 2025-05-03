@@ -1,3 +1,6 @@
+console.log("# demo_ternary_operator.ts");
+console.log("\n ## 三項演算子のデモ");
+
 // const message1: string = "123";
 const message1 = null;
 

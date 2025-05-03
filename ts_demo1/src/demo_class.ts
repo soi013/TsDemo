@@ -1,3 +1,6 @@
+console.log("# demo_class.ts");
+console.log("\n ## クラスのデモ");
+
 // クラス
 // Typeとの違いは
 // 1. コンストラクターがある

@@ -1,3 +1,6 @@
+console.log("# fizbuzz_function.ts");
+console.log("\n ## 関数でFizzBuzzを実装");
+
 for (const i of sequence(1, 100)) {
     const message = getFizzBuzzString(i);
     console.log(message);

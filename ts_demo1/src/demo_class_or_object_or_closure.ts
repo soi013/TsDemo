@@ -1,3 +1,6 @@
+console.log("# demo_class_or_object_or_closure.ts");
+console.log("\n ## オブジェクト版スピーカー");
+
 // オブジェクト版スピーカー
 type SpeakerObj = {
     maker: string;
@@ -23,6 +26,8 @@ function getSpeakerObjVolume(speakerObj: SpeakerObj): string {
 const speakerObj = createSpeakerObj("Sony", 10);
 console.log(`speakerObj: ${speakerObj.maker}, spec: ${getSpeakerObjVolume(speakerObj)}`);
 
+
+console.log("\n ## クラス版スピーカー");
 // クラス版スピーカー
 class SpeakerClass {
     readonly maker: string;

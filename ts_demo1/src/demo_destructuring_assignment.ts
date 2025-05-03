@@ -1,3 +1,6 @@
+console.log("# demo_destructuring_assignment.ts");
+console.log("\n ## 分割代入のデモ");
+
 type Family = {
     father: string;
     mother: string;

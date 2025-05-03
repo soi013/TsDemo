@@ -1,3 +1,6 @@
+console.log("# csv_reader_map.ts");
+console.log("\n ## mapでcsvファイルを読み込む");
+
 type User2 = {
     id: number;
     name: string;

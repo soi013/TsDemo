@@ -1,3 +1,6 @@
+console.log("# demo_array.ts");
+console.log("\n ## 配列のデモ");
+
 // 配列 numbers: number[]
 const numbers = [1, 2, 3];
 console.log(`numbers: ${numbers}`);

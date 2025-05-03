@@ -1,3 +1,6 @@
+console.log("# demo_function.ts");
+console.log("\n ## 関数のデモ");
+
 // 引数があって、返り値もある関数
 function RangeStartEnd(start: number, end: number): number[] {
     const result: number[] = [];

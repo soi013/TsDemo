@@ -1,3 +1,6 @@
+console.log("# demo_subtyping.ts");
+console.log("\n ## サブタイプのデモ");
+
 type Bike = {
     model: string;
 }

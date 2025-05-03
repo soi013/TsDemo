@@ -1,3 +1,6 @@
+console.log("# fizbuzz_for_if.ts");
+console.log("\n ## for文とif文でFizzBuzzを実装");
+
 for (let i = 1; i <= 100; i++) {
 
     if (i % 3 === 0 && i % 5 === 0) {

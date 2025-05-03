@@ -1,4 +1,5 @@
-console.log("demo_exception1.ts");
+console.log("# demo_exception1.ts");
+console.log("\n ## エラーのデモ1");
 
 const newError = new Error("test error");
 throw newError;

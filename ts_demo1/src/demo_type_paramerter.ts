@@ -1,3 +1,6 @@
+console.log("# demo_type_paramerter.ts");
+console.log("\n ## 型パラメーターのデモ");
+
 // ジェネリック型
 type Pair<T> = {
     first: T;
