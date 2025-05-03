@@ -23,6 +23,16 @@ doSomething({});
 doSomething(() => 999);
 
 
+// any型にはなんでも入れられる
+let anythingInput: any = "Hello";
+console.log({ anythingInput });
+anythingInput = 123;
+console.log({ anythingInput });
+anythingInput = true;
+console.log({ anythingInput });
+anythingInput = { jojo: "ジョセフ=ジョスター", statge: 2 };
+console.log({ anythingInput });
+
 
 
 
