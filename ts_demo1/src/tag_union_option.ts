@@ -69,3 +69,28 @@ const option4: Option<number> = { tag: 'none' }
 console.log("\n", { option4 })
 showOption2(option4)
 
+console.log("\n", "デリゲートを使う")
+
+function doSomethingIfExist<T, U>(option: Option<T>, callback: (value: T) => U) {
+    if (isExest<T>(option)) {
+        return {
+            tag: option.tag,
+            value: callback(option.value)
+        }
+    }
+
+    return option;
+}
+
+const option5 = doSomethingIfExist(option3, (value) => {
+    return value * 100
+})
+console.log("\n", { option5 })
+
+// オプション型の値が存在しない場合は、オプション型の値をそのまま返す
+const option6 = doSomethingIfExist(option4, (value) => {
+    return `value=${value}`
+})
+console.log("\n", { option6 })
+
+
