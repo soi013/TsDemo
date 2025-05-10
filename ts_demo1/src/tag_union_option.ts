@@ -44,4 +44,28 @@ option2 = { tag: 'exist', value: null }
 console.log("\n", { option2 })
 showOption(option2)
 
+console.log("\n", "ユーザー定義型ガードを使う")
+
+function showOption2<T>(option: Option<T>) {
+    if (isExest<T>(option)) {
+        console.log(`This is exist. value: ${option.value}`)
+    } else if (option.tag === 'none') {
+        console.log('This is none')
+    } else {
+        const exhaustiveCheck: never = option
+        throw new Error(`Unknown option: ${exhaustiveCheck}`)
+    }
+}
+
+function isExest<T>(option: Option<T>): option is Exist<T> {
+    return option.tag === 'exist';
+}
+
+const option3: Option<number> = { tag: 'exist', value: 999 }
+console.log("\n", { option3 })
+showOption2(option3)
+
+const option4: Option<number> = { tag: 'none' }
+console.log("\n", { option4 })
+showOption2(option4)
 
