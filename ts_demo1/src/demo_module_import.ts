@@ -43,3 +43,13 @@ import defaultExport from "./demo_module_export.js";
 console.log({ defaultExport });
 
 
+console.log(`\n ## 型をインポートする`);
+import { type Book, jojo6thBook } from "./demo_module_export.js";
+
+console.log({ jojo6thBook });
+const kiseijyuuBook: Book = {
+    title: "kiseijyuu",
+    author: "hitoshi iwaaki"
+};
+
+console.log({ kiseijyuuBook });

@@ -36,3 +36,16 @@ export default "JOJO";
 // export default 99;
 
 // ※基本的に非推奨らしい
+
+console.log(`\n ## 型をエクスポートする`);
+// 型をエクスポートする
+
+export type Book = {
+    title: string;
+    author: string;
+}
+
+export const jojo6thBook: Book = {
+    title: "Steel Ball Run",
+    author: "Hirohiko Araki"
+}
