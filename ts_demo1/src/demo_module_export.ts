@@ -16,4 +16,14 @@ export function getBookInfo() {
     return `(${bookTitle}) by (${bookAuthor})`;
 }
 
+console.log(`\n ## let変数のexport`);
+// let変数をexportする
+export let stageNumber = 1;
 
+export const increaseStageNumber = () => {
+    stageNumber++;
+}
+
+export const getCurrentStageNumber = () => {
+    return stageNumber;
+}
