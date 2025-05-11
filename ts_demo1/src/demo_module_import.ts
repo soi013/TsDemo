@@ -36,3 +36,10 @@ console.log(`current stage number: ${getCurrentStageNumber()}`);
 // stageNumber = 99;
 myStageNumber = 99;
 
+console.log(`\n ## default import`);
+// default export は名前をつけてインポートする
+import defaultExport from "./demo_module_export.js";
+
+console.log({ defaultExport });
+
+

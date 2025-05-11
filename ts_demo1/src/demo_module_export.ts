@@ -27,3 +27,12 @@ export const increaseStageNumber = () => {
 export const getCurrentStageNumber = () => {
     return stageNumber;
 }
+
+console.log(`\n ## default export`);
+//値だけ指定して変数名はなしでエクスポートする
+export default "JOJO";
+
+// モジュールに複数の既定のエクスポートを含めることはできません。ts(2528)
+// export default 99;
+
+// ※基本的に非推奨らしい
