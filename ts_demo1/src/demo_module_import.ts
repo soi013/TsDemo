@@ -53,3 +53,25 @@ const kiseijyuuBook: Book = {
 };
 
 console.log({ kiseijyuuBook });
+
+console.log(`\n ## モジュールの使い方 import側 一括インポート用`);
+// 一括インポートでは必ず as で名前をつける
+import * as allExport from "./demo_module_export_all.js";
+
+console.log({ allExport });
+
+// インポートしたものはasでつけた名前から参照する
+console.log(allExport.seriesTitle);
+console.log(allExport.episode1Title);
+console.log(allExport.episode2Title);
+console.log(allExport.episode3Title);
+console.log(allExport.episode4Title);
+console.log(allExport.episode5Title);
+console.log(allExport.episode6Title);
+
+const episode7: allExport.Episode = {
+    title: "The Force Awakens",
+    episode: 7
+}
+
+console.log({ episode7 });
