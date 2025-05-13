@@ -1,4 +1,10 @@
+// npm i express
+// だけだと、エラーする
 // モジュール 'express' の宣言ファイルが見つかりませんでした。'd:/Documents/GitHub/TsDemo/ts_express_demo/node_modules/express/index.js' は暗黙的に 'any' 型になります。
+
+// npm i -D @types/express
+// これで型情報が追加され、エラーが解消される
+
 import express from "express";
 
 console.log("demo_express.ts");

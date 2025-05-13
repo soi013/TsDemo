@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "fastify": "^3.2.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "undici-types": "^6.20.0"
   },
   "description": "",
