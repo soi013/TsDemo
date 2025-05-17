@@ -134,3 +134,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# ファイル読み書きデモ用
+ts_demo1/demo_source/fs_target_text_large.tmp
