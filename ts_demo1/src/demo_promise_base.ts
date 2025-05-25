@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises';
 import { performance } from 'perf_hooks';
 
-console.log("# demo_promise.ts");
+console.log("# demo_promise_base.ts");
 
 // promiseでのファイル読み込み
 console.log("\n ## promiseでのファイル読み込み");
