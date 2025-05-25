@@ -68,3 +68,32 @@ racePromise.then((data) => {
 });
 
 console.log(`2. started: race promise ${performance.now() - startTime2}ms`);
+
+await racePromise;
+
+// promise.allSettledで、一部が失敗しても全てのPromiseが完了まで待って結果を返す
+console.log("\n ## promise.allSettledで、一部が失敗しても全てのPromiseが完了まで待って結果を返す");
+
+const startTime3 = performance.now();
+
+const promiseReadFile3 = readFile(targetReadFilePath, 'utf-8');
+const promiseTimeout3 = new Promise(resolve => {
+    setTimeout(resolve, 1000)
+});
+const promiseError3 = new Promise(resolve => {
+    setTimeout(resolve, 500)
+    throw new Error('error')
+});
+
+console.log(`1. start__: allSettled promise ${performance.now() - startTime3}ms`);
+
+const allSettledPromise = Promise.allSettled([promiseReadFile3, promiseTimeout3, promiseError3]);
+
+allSettledPromise.then(([readResult, timeoutResult, errorResult]) => {
+    console.log(`3. end____: allSettled promise ${performance.now() - startTime3}ms`);
+    console.log(`3. readResult: status: ${readResult.status} value: ${readResult.status === 'fulfilled' ? readResult.value.toString().slice(0, 10) : readResult.reason}`);
+    console.log(`3. timeoutResult: status: ${timeoutResult.status} value: ${timeoutResult.status === 'fulfilled' ? timeoutResult.value : timeoutResult.reason}`);
+    console.log(`3. errorResult: status: ${errorResult.status} value: ${errorResult.status === 'fulfilled' ? errorResult.value : errorResult.reason}`);
+});
+
+console.log(`2. started: allSettled promise ${performance.now() - startTime3}ms`);
