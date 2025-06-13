@@ -68,3 +68,35 @@ await p999;
 
 console.log(`11. end____: ${performance.now() - startTime2}`);
 
+// async function
+console.log("\n ## async function");
+
+const startTime3 = performance.now();
+
+const delayFuncReturnNum = async function (num: number) {
+    console.log(`delayReturnNum_start: ${performance.now() - startTime3}`);
+    await sleep(1000);
+    console.log(`delayReturnNum_end: ${performance.now() - startTime3}`);
+    return num;
+}
+
+const result3 = delayFuncReturnNum(999);
+console.log(`delayFuncReturnNum_started: ${performance.now() - startTime3}`);
+await result3;
+console.log(`delayFuncReturnNum_end: ${performance.now() - startTime3}`);
+
+// async arrow関数式
+console.log("\n ## async arrow関数式");
+
+const startTime4 = performance.now();
+const delayArrowFuncReturnNum = async (num: number) => {
+    console.log(`delayArrowFuncReturnNum_start: ${performance.now() - startTime4}`);
+    await sleep(1000);
+    console.log(`delayArrowFuncReturnNum_end: ${performance.now() - startTime4}`);
+    return num;
+}
+
+const result4 = delayArrowFuncReturnNum(666);
+console.log(`delayArrowFuncReturnNum_started: ${performance.now() - startTime4}`);
+await result4;
+console.log(`delayArrowFuncReturnNum_end: ${performance.now() - startTime4}`);
